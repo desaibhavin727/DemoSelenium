@@ -1,0 +1,57 @@
+package data;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReadWriteTextFIle {
+
+	public static void main(String[] args) throws IOException {
+		
+		//Create New Text File
+		File f = new File("/Users/sai/Downloads/testing/temp.txt");
+		f.createNewFile();
+		
+		//write into textfile
+		FileWriter fw = new FileWriter(f);
+		BufferedWriter out = new BufferedWriter(fw);
+
+		
+		out.write("This is 1st Line");
+		out.newLine();
+		out.write("This is 2nd Line");
+		out.newLine();
+		out.write("This is 3rd Line");
+		out.newLine();
+		out.write("This is 4th Line");
+		out.newLine();
+		out.write("This is 5th Line");
+		out.newLine();
+		out.write("This is 6th Line");
+		out.flush();
+		out.close();
+		
+		//Read from Text File
+		FileReader fr = new FileReader(f);
+		BufferedReader rd = new BufferedReader(fr);
+		
+		/*System.out.println(rd.readLine());
+		System.out.println(rd.readLine());
+		System.out.println(rd.readLine());
+		System.out.println(rd.readLine());
+		System.out.println(rd.readLine());
+		System.out.println(rd.readLine());
+		System.out.println(rd.readLine());*/
+		
+		String x;
+		while((x = rd.readLine()) != null ) {
+			
+		System.out.println(rd.readLine());
+		
+		
+		}
+
+	}}

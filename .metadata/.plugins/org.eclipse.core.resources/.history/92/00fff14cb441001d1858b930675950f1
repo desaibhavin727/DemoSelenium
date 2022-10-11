@@ -1,0 +1,35 @@
+package Data;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class AdidasLoginTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+
+		System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.get("https://www.adidas.ca/en/account-login");
+		Thread.sleep(2000);
+		
+		
+		driver.findElement(By.id("login-email")).sendKeys("hdbsahdb@test.com");
+		driver.findElement(By.id("login-password")).sendKeys("jhewbdbwd");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//span[contains(text(),'Email Log in')]")).click();		
+		
+		Thread.sleep(3000);
+		
+		String expectedErr = "Your request timed out – please retry";
+		String actualErr = driver.findElement(By.xpath("//div[@data-auto-id=\"login-error-message\" ]")).getText();
+		System.out.println(actualErr);
+		
+		if(expectedErr.equals(actualErr)) {
+			System.out.println("pass");
+		}else {
+			System.out.println("fail");
+		}
+	}
+
+}

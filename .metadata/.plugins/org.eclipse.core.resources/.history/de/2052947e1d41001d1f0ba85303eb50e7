@@ -1,0 +1,64 @@
+package selenium;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class AliExpressHoverTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver","/Users/sai/Downloads/SeleniumJars//chromedriver");
+		ChromeDriver driver = new ChromeDriver(); 
+		driver.get("https://www.aliexpress.com/"); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		
+		List<WebElement> popup1 = driver.findElements(By.xpath("//img[@class='close-btn']"));
+		System.out.println(popup1.size());
+		
+		if(popup1.size()>0) {
+			popup1.get(0).click();
+		}
+		
+		List<WebElement> popup2 = driver.findElements(By.className("_24EHh"));
+		System.out.println(popup2.size());
+		
+		if(popup2.size()>0) {
+			popup2.get(0).click();
+		}
+		
+		List<WebElement> popup3 = driver.findElements(By.xpath("//img[@src='https://img.alicdn.com/tfs/TB1a.Oge_M11u4jSZPxXXahcXXa-48-48.png']"));
+		System.out.println(popup3.size());
+		
+		if(popup3.size()>0) {
+			popup3.get(0).click();
+		}
+		
+
+		WebElement AllLists = driver.findElement(By.xpath("(//div[@class='categories-list-box'])/dl[2]/dt/span/a"));
+		Actions builder = new Actions(driver);
+		builder.moveToElement(AllLists);
+		builder.perform();
+		System.out.println(AllLists.getSize());
+		
+		
+		//List<WebElement> MensLists = driver.findElements(By.xpath("(//dl[@data-role='two-menu'])[9]//a"));
+		//System.out.println(MensLists.size());
+		
+		
+		
+		//System.out.println(driver.findElements(By.xpath("(//dl[@data-role='two-menu'])[9]//a")).size());
+		//System.out.println(MensLists.size());
+		
+		//for(WebElement a : MensLists) {
+		System.out.println(AllLists.getText());
+		}
+
+	}
+
+}

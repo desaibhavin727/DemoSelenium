@@ -1,0 +1,53 @@
+package selenium;
+
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+public class MultipleBrowserTest {
+
+	public static void main(String[] args) throws IOException {
+
+		//String browser = "Firefox";  //Any Browsers Chrome, Safari, Firefox // we will read this value from data from Properties file
+		WebDriver driver;
+		
+		FileInputStream B = new FileInputStream("C:\\testing\\browser.properties");
+		Properties browser = new Properties();
+		browser.load(B);
+		
+		String P = browser.getProperty("browser");
+		System.out.println(P);
+		System.out.println(browser.getProperty(P));
+		
+		if(P.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "C:\\SeleniumJars\\geckodriver.exe");
+			driver = new FirefoxDriver(); 
+		} else if (P.equals("Chrome")) {
+			System.setProperty("webdriver.chrome.driver", "C:\\SeleniumJars\\chromedriver.exe");
+			driver = new ChromeDriver();
+		} else {
+			System.setProperty("webdriver.safari.driver", "C:\\SeleniumJars\\safaridriver.exe");
+			driver = new SafariDriver();
+		} 
+		
+		//System.out.println(browser.getProperty("url"));
+		
+		driver.get("https://facebook.com/"); 
+		
+		
+		driver.findElement(By.id("email")).sendKeys("gdhgdgjdgfjdgsks");
+		driver.findElement(By.id("pass")).sendKeys("fvhfthfhfhfthff");
+		driver.findElement(By.name("login")).click();
+		
+
+	}
+
+}
+
+

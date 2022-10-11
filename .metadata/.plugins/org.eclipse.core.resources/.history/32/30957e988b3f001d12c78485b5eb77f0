@@ -1,0 +1,44 @@
+package pkg1;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class LoginTest {
+
+	public static String browser = "Firefox"; //External Configuration Xls, csv
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver Driver; //Global 
+		
+		
+		if (browser.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+			 Driver = new FirefoxDriver();
+		} else if (browser.equals("Chrome")) {
+			System.setProperty("webdriver.chrome.driver","/Users/sai/Downloads/SeleniumJars//chromedriver");
+			Driver = new ChromeDriver();
+		}
+		
+		
+		System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+		FirefoxDriver driver = new FirefoxDriver();
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
+		
+		driver.get("https://watchapne.co/web-series/view/Jamtara-Season-2/Episode-7");
+		driver.findElement(By.xpath("(//img[@src='https://watchapne.co//pub/images/pl.png'])[1]")).click();
+		driver.findElement(By.name("Play Video")).click();
+		//driver.getWindowHandle();
+		//Thread.sleep(5000);
+		//driver.close();
+		
+		
+	}
+
+}

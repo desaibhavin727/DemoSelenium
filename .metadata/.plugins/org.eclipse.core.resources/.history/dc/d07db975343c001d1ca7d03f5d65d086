@@ -1,0 +1,31 @@
+package selenium;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class DynamicTableTest {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.get("https://www.w3schools.com/html/html_tables.asp"); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		driver.findElement(By.id("customers"));
+		
+		List<WebElement> allrow = driver.findElements(By.id("customers"));
+		System.out.println(allrow.size());
+				
+		}
+		
+		
+		
+		
+	}
+
+

@@ -1,0 +1,28 @@
+package selenium;
+
+import org.junit.Test;
+
+import org.junit.Assert;
+
+public class Testing3 {
+
+	@Test
+	public void test6() {
+		String actual = "abc";
+		String expacted = "abc1";
+		System.out.println("before 1st Assert");
+		try {
+		Assert.assertEquals(expacted, actual); // we use regular assert in the industry
+		}catch(Throwable t) {
+		System.out.println("After 1st Assert");
+		}
+		try {
+		Assert.assertEquals("After 4>3", 4>3);
+		}catch(Throwable t) {
+		System.out.println("After 2nd Assert");
+		}
+	}
+
+}
+
+

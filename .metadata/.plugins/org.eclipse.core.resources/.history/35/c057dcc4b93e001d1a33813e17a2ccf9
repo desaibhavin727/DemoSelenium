@@ -1,0 +1,37 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+public class MultipleBrowserTest1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String browser = "Firefox"; //Chrome, Safari //We'll read this value from Data file like Excel, Properties
+		WebDriver driver;
+		
+		if(browser.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "/Users/sai/Downloads/SeleniumJars//geckodriver");
+			driver = new FirefoxDriver(); 
+		}else if(browser.equals("Chrome")) {
+			System.setProperty("webdriver.chrome.driver", "/Users/sai/Downloads/SeleniumJars//chromedriver");
+			driver = new ChromeDriver(); 
+		}else {
+			System.setProperty("webdriver.safari.driver", "/Users/sai/Downloads/SeleniumJars//safaridriver");
+			driver = new SafariDriver(); 
+		}
+	
+		driver.get("https://www.facebook.com/"); 
+		
+		driver.findElement(By.id("email")).sendKeys("hsvdhjvdjqbv"); 
+		driver.findElement(By.id("pass")).sendKeys("ckdsnjkndj");  
+		driver.findElement(By.name("login")).click(); 
+		
+		
+	}
+
+}

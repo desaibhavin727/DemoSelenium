@@ -1,0 +1,44 @@
+package pkg1;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class LoginTest {
+
+	public static String browser = "Firefox"; //External Configuration Xls, csv
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver Driver;
+		if (browser.equals("Firefox")) {
+
+			System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+			 Driver = new FirefoxDriver();
+		} else if (browser.equals("Chrome")) {
+			System.setProperty("webdriver.chrome.driver","/Users/sai/Downloads/SeleniumJars//chromedriver");
+			Driver = new ChromeDriver();
+		}
+		
+		
+		System.setProperty("webdriver.gecko.driver","/Users/sai/Downloads/SeleniumJars//geckodriver");
+		FirefoxDriver driver = new FirefoxDriver();
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
+		
+		driver.get("https://www.saucedemo.com/");
+		driver.findElement(By.id("user-name")).sendKeys("hjsabvhab@");
+		driver.findElement(By.id("password")).sendKeys("hcbjsabd");
+		driver.findElement(By.id("login-button")).click();
+		
+		Thread.sleep(5000);
+		driver.close();
+		
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package data;
+
+public class ReadXMLFileTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		
+		//https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
+	
+	
+	
+	
+	}
+
+}

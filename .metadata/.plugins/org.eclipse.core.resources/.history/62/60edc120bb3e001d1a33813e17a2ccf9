@@ -1,0 +1,40 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+public class MultipleBrowserTest1 {
+
+	public static void main(String[] args) {
+
+		WebDriver driver;
+
+		Xls_Reader P = new Xls_Reader("C:\\testing\\NikulTest.xlsx");
+
+		String browser = P.getCellData("Data1", "Browser", 2);
+		System.out.println(browser);
+
+		if (browser.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "C:\\SeleniumJars\\geckodriver.exe");
+			driver = new FirefoxDriver();
+		} else if (browser.equals("chrome")) {
+			System.setProperty("webdriver.chrome.driver", "C:\\SeleniumJars\\chromedriver.exe");
+			driver = new ChromeDriver();
+		} else {
+			System.setProperty("webdriver.safari.driver", "C:\\SeleniumJars\\safaridriver.exe");
+			driver = new SafariDriver();
+		}
+
+		driver.get("https://facebook.com/");
+
+		driver.findElement(By.id("email")).sendKeys("gdhgdgjdgfjdgsks");
+		driver.findElement(By.id("pass")).sendKeys("fvhfthfhfhfthff");
+		driver.findElement(By.name("login")).click();
+
+		// copy code from multiple browser test // read data from excel file
+	}
+
+}
